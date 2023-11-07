@@ -7,7 +7,7 @@ export default class fileOps {
   }
 
   appendFile(item) {
-    appendFileSync(this.fileName,item )
+    appendFileSync(this.fileName, item )
   }
 
   readFile() {
