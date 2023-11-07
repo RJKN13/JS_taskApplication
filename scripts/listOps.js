@@ -1,3 +1,4 @@
+import { Console } from "console";
 import fileOps from "./fileOps.js";
 
 export default class addList {
@@ -45,6 +46,39 @@ export default class addList {
 
   removeFromListByName(pickedUpItemName) {
     let pickedUpItemIndex = this.todoList.indexOf(pickedUpItemName)
-    return this.removeFromListByIndex(pickedUpItemIndex)
+    this.removeFromListByIndex(pickedUpItemIndex)
+    return pickedUpItemName
+  }
+
+  moveToTop(itemName) {
+    let item = this.removeFromListByName(itemName)
+    this.addToTopOfList(item)
+  }
+
+  moveToBottom(itemName) {
+    let item = this.removeFromListByName(itemName)
+    this.addToList(item)
+  }
+
+  moveDown(item) {
+    let currentIndex = this.todoList.indexOf(item)
+    if (currentIndex != this.todoList.length - 1) {
+      let nextIndex = currentIndex + 1
+      let temp = this.todoList[nextIndex]
+      this.todoList[nextIndex] = this.todoList[currentIndex]
+      this.todoList[currentIndex] = temp 
+      this.fs.writeFile(this.listToString(this.todoList))  
+      }    
+  }
+
+  moveUp(item) {
+    let currentIndex = this.todoList.indexOf(item)
+    if (currentIndex != 0) {
+      let previousIndex = currentIndex - 1
+      let temp = this.todoList[previousIndex]
+      this.todoList[previousIndex] = this.todoList[currentIndex]
+      this.todoList[currentIndex] = temp    
+    }    
+    this.fs.writeFile(this.listToString(this.todoList))  
   }
 }
