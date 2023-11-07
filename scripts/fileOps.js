@@ -7,14 +7,14 @@ export default class fileOps {
   }
 
   appendFile(item) {
-    appendFileSync(this.fileName, item )
+    appendFileSync(this.fileName,item)
   }
 
   readFile() {
-    return readFileSync(this.fileName, "utf-8" )
+    return readFileSync(this.fileName, "utf-8")
   }
 
-  writeFile(data) {
-    writeFileSync(this.fileName, data )
+  writeFile(data, fileName) {
+    writeFileSync(fileName, data)
   }
 }
