@@ -1,4 +1,4 @@
-
+import fileOps from "./fileOps.js";
 import listOps from "./listOps.js"; 
 import promptSync from "prompt-sync"
 const prompt = promptSync()
@@ -143,8 +143,6 @@ function remove(option) {
     }
 }
 }
-
-
 
 function removeFromBottomOfList() {
   mainlist.removeFromBottomOfList()

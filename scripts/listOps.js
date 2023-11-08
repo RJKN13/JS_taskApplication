@@ -27,6 +27,7 @@ export default class listOps {
       this.todoList.push(todoItem)
       this.fs.appendFile(todoItem + ",")    
     }
+    console.log(this.fs.readFile(toDoFile))
   }
   
   addToTopOfList(topItem) {
@@ -35,16 +36,19 @@ export default class listOps {
       let oldList = this.fs.readFile()
       this.fs.writeFile(topItem + "," + oldList, toDoFile)  
     }
+    console.log(this.fs.readFile(toDoFile))
   }
 
   removeFromBottomOfList() {
     this.todoList.pop()
     this.fs.writeFile(this.listToString(this.todoList), toDoFile)
+    console.log(this.fs.readFile(toDoFile))
   }
 
   removeFromTopOfList() {
     this.todoList.shift();
     this.fs.writeFile(this.listToString(this.todoList), toDoFile)
+    console.log(this.fs.readFile(toDoFile))
   }
 
   removeFromListByIndex(index) {
@@ -52,22 +56,26 @@ export default class listOps {
       this.todoList.splice(index, 1)
     }
     this.fs.writeFile(this.listToString(this.todoList), toDoFile)
+    console.log(this.fs.readFile(toDoFile))
   }
 
   removeFromListByName(pickedUpItemName) {
     let pickedUpItemIndex = this.todoList.indexOf(pickedUpItemName)
     this.removeFromListByIndex(pickedUpItemIndex)
+    console.log(this.fs.readFile(toDoFile))
     return pickedUpItemName
   }
 
   moveToTop(itemName) {
     let item = this.removeFromListByName(itemName)
     this.addToTopOfList(item)
+    console.log(this.fs.readFile(toDoFile))
   }
 
   moveToBottom(itemName) {
     let item = this.removeFromListByName(itemName)
     this.addToList(item)
+    console.log(this.fs.readFile(toDoFile))
   }
 
   moveDown(item) {
@@ -78,7 +86,8 @@ export default class listOps {
       this.todoList[nextIndex] = this.todoList[currentIndex]
       this.todoList[currentIndex] = temp 
       this.fs.writeFile(this.listToString(this.todoList), toDoFile)  
-      }    
+    }    
+    console.log(this.fs.readFile(toDoFile))
   }
 
   moveUp(item) {
@@ -90,10 +99,13 @@ export default class listOps {
       this.todoList[currentIndex] = temp    
     }    
     this.fs.writeFile(this.listToString(this.todoList), toDoFile)  
+    console.log(this.fs.readFile(toDoFile))
   }
 
   removeFromListAndAddToDone(pickedUpItemName) {
     this.haveDoneList.push(this.removeFromListByName(pickedUpItemName))
     this.fs.writeFile(this.listToString(this.haveDoneList), haveDoneFile)
+    console.log("To-do file: " + this.fs.readFile(toDoFile))
+    console.log("Have-done file: " + this.fs.readFile(haveDoneFile))
 }
 }
