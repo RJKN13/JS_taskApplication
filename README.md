@@ -1,8 +1,9 @@
 # JS_taskApplication
 
-[[_TOC_]]
-
 # To-do List
+
+## Run
+To run the application start with `node main.js` in your terminal. Follow the options to do activities with the lists and check the list with `toDoList.csv`, `haveDoneList.csv` in your folder.
 
 ## Classes
 

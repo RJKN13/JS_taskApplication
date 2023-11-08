@@ -1,6 +1,9 @@
 {
    "type": "module",
-  "dependencies": {
-    "fs": "^0.0.1-security"    
-  }
+   "dependencies": {
+      "browserify": "^17.0.0",
+      "esmify": "^2.1.1",
+      "fs": "^0.0.1-security",
+      "prompt-sync": "^4.2.0"
+   }
 }

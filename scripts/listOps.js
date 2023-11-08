@@ -23,14 +23,18 @@ export default class listOps {
   }
   
   addToList(todoItem) {
-    this.todoList.push(todoItem)
-    this.fs.appendFile(todoItem + ",")
+    if (!this.todoList.includes(todoItem)) {
+      this.todoList.push(todoItem)
+      this.fs.appendFile(todoItem + ",")    
+    }
   }
   
   addToTopOfList(topItem) {
-    let newList = this.todoList.unshift(topItem);
-    let oldList = this.fs.readFile()
-    this.fs.writeFile(topItem + "," + oldList, toDoFile)
+    if (!this.todoList.includes(topItem)) {
+      let newList = this.todoList.unshift(topItem);
+      let oldList = this.fs.readFile()
+      this.fs.writeFile(topItem + "," + oldList, toDoFile)  
+    }
   }
 
   removeFromBottomOfList() {
